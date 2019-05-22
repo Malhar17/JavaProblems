@@ -1,8 +1,5 @@
 import java.util.*;
 
-import static java.lang.Math.cos;
-import static java.lang.Math.max;
-
 public class mazeProblem {
 
     private static int count = 0;
@@ -17,7 +14,7 @@ public class mazeProblem {
                 maze[i][j] = sc.nextInt();
         }
 
-        System.out.println(getMaxCost(maze, n, 0, 0)+ " " + count);
+        System.out.println("MaxCost: "+getMaxCost(maze, n, 0, 0)+ "\tTotal Paths: " + count);
     }
 
     private static int getMaxCost(int[][] maze, int n, int i, int  j) {
@@ -53,7 +50,8 @@ public class mazeProblem {
         {
             int temp1 = getMaxCost(maze, n, i+1, j);
             int temp2 = getMaxCost(maze, n, i, j+1);
-            cost = 3 + (temp1>temp2 ? temp1 : temp2);
+            if(temp1 != 0 && temp2 != 0)
+                cost = 3 + (temp1>temp2 ? temp1 : temp2);
         }
         return  cost;
     }
